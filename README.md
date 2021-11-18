@@ -2,4 +2,4 @@
 
 PyTorch implementation for NED.
 
-![demo.gif](demo.gif)
+![demo.gif](demo.gif=250x250)
