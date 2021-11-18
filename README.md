@@ -2,4 +2,4 @@
 
 PyTorch implementation for NED.
 
-![demo.gif](demo.gif =250x250)
+<img src="demo.gif" width="50%" height="50%"/>
