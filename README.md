@@ -2,4 +2,4 @@
 
 PyTorch implementation for NED.
 
-<img src="demo.gif" width="80%" height="80%"/>
+<img src="demo.gif" width="100%" height="100%"/>
