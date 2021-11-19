@@ -1,7 +1,7 @@
 ## Neural Emotion Director (NED)
 This is the official Pytorch implementation of NED.
 
-<img src="imgs/demo.gif" width="100%" height="100%"/>
+<img src="imgs/teaser.gif" width="100%" height="100%"/>
 
 > **Neural Emotion Director: Speech-preserving semantic control of facial expressions in “in-the-wild” videos**<br>
 > <br>
