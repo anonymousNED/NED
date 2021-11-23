@@ -36,7 +36,7 @@ For example, for testing the method on Tarantino's footage, a structure similar 
 ```
 Tarantino ----- videos ----- Tarantino_t.mp4
 ```
-Under the above structure, there are 3 options for the videos placed in the "videos" subfolder:
+Under the above structure, there are 3 options for the video(s) placed in the "videos" subfolder:
 1. Use this footage to train a neural face renderer on the actor.
 2. Use it as test footage for applying our method.
 3. Use it only as reference clip for transferring the expressive style of the actor to another subject.
