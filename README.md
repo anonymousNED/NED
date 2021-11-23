@@ -92,7 +92,7 @@ For our Youtube actors, we provide pretrained renderer's [here](https://drive.go
 
 Then, assuming that preprocessing (in **test** mode) has been performed for the selected test video (see above), we can manipulate the expressions of the celebrity in this video by one of the following 2 ways:
 
-### Label-driven manipulation
+##### 1.Label-driven manipulation
 Select one of the 7 basic emotions (happy, angry, surprised, neutral, fear, sad, disgusted) and run :
 ```bash
 python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_checkpoints --trg_emotions <emotions> --exp_name <exp_name>
@@ -101,7 +101,7 @@ python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_
 - ```<emotions>``` is one or more of the 7 emotions. If one emotion is given, e.g. ```--trg_emotions happy```, all the video will be converted to happy, whereas for 2 or more emotions, such as ```--trg_emotions happy angry``` the first half of the video will be happy, the second half angry and so on.
 - ```<exp_name>``` is the name of the sub-folder that will be created under the <celeb_path> for storing the results.
 
-### Reference-driven manipulation
+##### 2.Reference-driven manipulation
 In this case, the reference video should first be preprocessed (see above) in **reference** mode. Then run:
 ```bash
 python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_checkpoints --ref_dirs <ref_dirs> --exp_name <exp_name>
@@ -109,6 +109,9 @@ python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_
 - ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino").
 - ```<ref_dirs>``` is one or more of the reference videos. In particular, the path to the "DECA" sublfolder has to be given. As with labels, more than one paths can be given, in which case the video will be transformed sequentially according to those reference styles.
 - ```<exp_name>``` is the name of the sub-folder that will be created under the <celeb_path> for storing the results.
+
+
+
 
 Then, run:
 ```bash
