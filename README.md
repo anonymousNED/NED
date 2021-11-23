@@ -1,8 +1,9 @@
-## Neural Emotion Director (NED)
-This is the official Pytorch implementation of NED.
+## Neural Emotion Director (NED) - Official Pytorch Implementation
 
 <img src="imgs/teaser.gif" width="100%" height="100%"/>
+Example video of facial emotion manipulation while retaining the original mouth motion, i.e. speech. We show examples of 3 basic emotions.
 
+This repository contains our anonymized source code for the paper:
 > **Neural Emotion Director: Speech-preserving semantic control of facial expressions in “in-the-wild” videos**<br>
 > <br>
 >
@@ -140,3 +141,13 @@ python renderer/train.py --celeb <celeb_path> --checkpoints_dir <checkpoints_dir
 - ```<celeb_path>``` is the path to the train folder used for this actor.
 - ```<checkpoints_dir>``` is the new path where the checkpoints will be saved.
 - ```<load_pretrain>``` is the path checkpoints of the pretrained meta-renderer (e.g. "./checkpoints_meta-renderer")
+
+## 3.Preprocess a reference video
+If you want to use a reference clip (e.g. from a movie) of another actor to transfer his/her speaking style to your test actor, simply preprocess the reference actor's clip as described above (mode=*reference*) and follow the instructions **Reference-driven manipulation**.
+
+# Acknowledgements
+We would like to thank the following great repositories that our code borrows from:
+- [Head2Head](https://github.com/michaildoukas/head2head)
+- [StarGAN v2](https://github.com/clovaai/stargan-v2)
+- [DECA](https://github.com/YadiraF/DECA)
+- [FSGAN](https://github.com/YuvalNirkin/fsgan)
