@@ -29,16 +29,16 @@ conda activate NED
 1. Follow the instructions in [DECA](https://github.com/YadiraF/DECA) (under the *Prepare data* section) to acquire the 3 files ('generic_model.pkl', 'deca_model.tar', 'FLAME_albedo_from_BFM.npz') and place them under "./DECA/data".
 2. Fill out the [form](https://docs.google.com/forms/d/e/1FAIpQLScyyNWoFvyaxxfyaPLnCIAxXgdxLEMwR9Sayjh3JpWseuYlOA/viewform) to get access to the [FSGAN](https://github.com/YuvalNirkin/fsgan)'s pretrained models. Then download 'lfw_figaro_unet_256_2_0_segmentation_v1.pth' (from the "v1" folder) and place it under "./preprocessing/segmentation".
 
-## Create video structure and preprocessing
+## Video preprocessing
 To train or test the method on a specific subject, first create a folder for this subject and place the video(s) of this subject into a **"videos"** subfolder. The training videos for the 6 Youtube actors used in our experiments can be downloaded from [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing), while the test videos for the same actors are available [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing).
 
-For example, for testing the method on Tarantino's footage, a structure similar to the following must be created:
+For example, for testing the method on Tarantino's clip, a structure similar to the following must be created:
 ```
 Tarantino ----- videos ----- Tarantino_t.mp4
 ```
 Under the above structure, there are 3 options for the video(s) placed in the "videos" subfolder:
 1. Use this footage to train a neural face renderer on the actor.
-2. Use it as test footage for applying our method.
+2. Use it as test footage for this actor and apply our method for manipulating his/her emotion.
 3. Use it only as reference clip for transferring the expressive style of the actor to another subject.
 
 To preprocess the video (face detection, segmentation, landmark detection, 3D reconstruction, alignment) run:
@@ -48,5 +48,40 @@ To preprocess the video (face detection, segmentation, landmark detection, 3D re
 - ```<celeb_path>``` is the path to the folder used for this actor
 - ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively.
 
+After successfull execution, the following structure must have been created:
+
+```
+<celeb_path> ----- videos -----video.mp4 (e.g. "Tarantino_t.mp4")
+                   |        |
+                   |        ---video.txt (e.g. "Tarantino_t.txt", stores the per-frame bounding boxes, created only if mode=**test**)
+                   |
+                   --- images (cropped and resized images)
+                   |
+                   --- full_frames (original frames of the video, created only if mode=**test** or mode=*reference*)
+                   |
+                   --- eye_landmarks (created only if mode=**train** or mode=*test*)
+                   |
+                   --- eye_landmarks_aligned (same as above, but aligned)
+                   |
+                   --- align_transforms (similarity transformation matrices, created only if mode=**train** or mode=*test*)
+                   |
+                   --- faces (segmented images of the face, created only if mode=**train** or mode=*test*)
+                   |
+                   --- faces_aligned (same as above, but aligned)
+                   |
+                   --- masks (binary face masks, created only if mode=**train** or mode=*test*)
+                   |
+                   --- masks_aligned (same as above, but aligned)
+                   |
+                   --- DECA (3D face model parameters)
+                   |
+                   --- nmfcs (NMFC images, created only if mode=**train** or mode=*test*)
+                   |
+                   --- nmfcs_aligned (same as above, but aligned)
+                   |
+                   --- shapes (detailed shape images, created only if mode=**train** or mode=*test*)
+                   |
+                   --- shapes_aligned (same as above, but aligned)
+```
 ## Manipulate the emotion on a test video
 Download our pretrained manipulator from [here](https://drive.google.com/drive/folders/1ghqkO2y-rmH8kmCUJ3jrkTf2tLgQgvd8?usp=sharing). 
