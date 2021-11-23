@@ -45,8 +45,8 @@ To preprocess the video (face detection, segmentation, landmark detection, 3D re
 ```bash
 ./preprocess.sh <celeb_path> <mode>
 ```
-- ```<celeb_path>``` is the path to the folder used for this actor
-- ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively
+- ```<celeb_path>``` is the path to the folder used for this actor.
+- ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively.
 
 After successfull execution, the following structure will be created:
 
@@ -86,22 +86,41 @@ After successfull execution, the following structure will be created:
 ## Manipulate the emotion on a test video
 Download our pretrained manipulator from [here](https://drive.google.com/drive/folders/1fLAsB2msBcLnRJWlixXt-hJ8FeX3Az6T?usp=sharing) and unzip the checkpoint.
 
-Then, assuming that preprocessing (in **test** mode) has been performed for a given video (see above), we can manipulate the expressions of the celebrity in this video by one of the following 2 ways:
+Also, download and preprocess the test video for one of our target Youtube actors (or use a new actor, requires training a new neural face renderer).
+
+For our Youtube actors, we provide pretrained renderer's [here](https://drive.google.com/drive/folders/1vBVeiBvVP_fZ5jPSv7yd7OsdiI22Mwnd?usp=sharing). Download the .zip file for the desired actor and unzip it.
+
+Then, assuming that preprocessing (in **test** mode) has been performed for the selected test video (see above), we can manipulate the expressions of the celebrity in this video by one of the following 2 ways:
 
 ### Label-driven manipulation
 Select one of the 7 basic emotions (happy, angry, surprised, neutral, fear, sad, disgusted) and run :
 ```bash
 python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_checkpoints --trg_emotions <emotions> --exp_name <exp_name>
 ```
-- ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino")
+- ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino").
 - ```<emotions>``` is one or more of the 7 emotions. If one emotion is given, e.g. ```--trg_emotions happy```, all the video will be converted to happy, whereas for 2 or more emotions, such as ```--trg_emotions happy angry``` the first half of the video will be happy, the second half angry and so on.
 - ```<exp_name>``` is the name of the sub-folder that will be created under the <celeb_path> for storing the results.
 
 ### Reference-driven manipulation
-In this case the reference video should first be preprocessed (see above) in **reference** mode. Then run:
+In this case, the reference video should first be preprocessed (see above) in **reference** mode. Then run:
 ```bash
 python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_checkpoints --ref_dirs <ref_dirs> --exp_name <exp_name>
 ```
-- ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino")
+- ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino").
 - ```<ref_dirs>``` is one or more of the reference videos. In particular, the path to the "DECA" sublfolder has to be given. As with labels, more than one paths can be given, in which case the video will be transformed sequentially according to those reference styles.
 - ```<exp_name>``` is the name of the sub-folder that will be created under the <celeb_path> for storing the results.
+
+Then, run:
+```bash
+./postprocess.sh <celeb_path> <exp_name> <checkpoints_dir>
+```
+- ```<celeb_path>``` is the path to the test folder used for this actor.
+- ```<exp_name>``` is the name you have given to the experiment in the previous step.
+- ```<checkpoints_dir>``` is the path to the pretrained renderer for this actor (e.g. "./checkpoints_tarantino" for Tarantino).
+
+This step performs neural rendering, un-alignment and blending of the modified faces. Finally, you should see the ```full_frames``` sub-folder into ```<celeb_path>/<exp_name>```. This contains the full frames of the video with the altered emotion. To convert them to video, run:
+```bash
+python postprocessing/images2video.py --imgs_path <full_frames_path> --audio <original_video_path>
+```
+- ```<full_frames_path>``` is the path to the full frames (e.g. "./Tarantino/happy/full_frames")
+- ```<original_video_path>``` is the path to the original video (e.g. "./Tarantino/videos/tarantino_t.mp4"). This argment is optional and is used to add the original audio to the generated video.
