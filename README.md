@@ -128,3 +128,15 @@ python postprocessing/images2video.py --imgs_path <full_frames_path> --out_path 
 - ```<full_frames_path>``` is the path to the full frames (e.g. "./Tarantino/happy/full_frames").
 - ```<out_path>``` is the path for saving the video (e.g. "./Tarantino_happy.mp4").
 - ```<original_video_path>``` is the path to the original video (e.g. "./Tarantino/videos/tarantino_t.mp4"). This argment is optional and is used to add the original audio to the generated video.
+
+
+## 2.Train a neural face renderer for a new celebrity
+Download our pretrained meta-renderer ("checkpoints_meta-renderer.zip") from the link above and unzip the checkpoints.
+
+Assuming that the training video of the new actor has been preprocessed (in **train** mode) as described above, you can then finetune our meta-renderer on this actor by running:
+```bash
+python renderer/train.py --celeb <celeb_path> --checkpoints_dir <checkpoints_dir> --load_pretrain <pretrain_checkpoints>
+```
+- ```<celeb_path>``` is the path to the train folder used for this actor.
+- ```<checkpoints_dir>``` is the new path where the checkpoints will be saved.
+- ```<load_pretrain>``` is the path checkpoints of the pretrained meta-renderer (e.g. "./checkpoints_meta-renderer")
