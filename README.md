@@ -123,7 +123,8 @@ Then, run:
 
 This step performs neural rendering, un-alignment and blending of the modified faces. Finally, you should see the ```full_frames``` sub-folder into ```<celeb_path>/<exp_name>```. This contains the full frames of the video with the altered emotion. To convert them to video, run:
 ```bash
-python postprocessing/images2video.py --imgs_path <full_frames_path> --audio <original_video_path>
+python postprocessing/images2video.py --imgs_path <full_frames_path> --out_path <out_path> --audio <original_video_path>
 ```
-- ```<full_frames_path>``` is the path to the full frames (e.g. "./Tarantino/happy/full_frames")
+- ```<full_frames_path>``` is the path to the full frames (e.g. "./Tarantino/happy/full_frames").
+- ```<out_path>``` is the path for saving the video (e.g. "./Tarantino_happy.mp4").
 - ```<original_video_path>``` is the path to the original video (e.g. "./Tarantino/videos/tarantino_t.mp4"). This argment is optional and is used to add the original audio to the generated video.
