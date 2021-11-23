@@ -40,3 +40,10 @@ Under the above structure, there are 3 options for the video(s) placed in the "v
 1. Use this footage to train a neural face renderer on the actor.
 2. Use it as test footage for applying our method.
 3. Use it only as reference clip for transferring the expressive style of the actor to another subject.
+
+To preprocess the video (face detection, segmentation, landmark detection, 3D reconstruction, alignment) run:
+```bash
+./preprocess.sh <celeb_path> <mode>
+```
+- ```<celeb_path>``` is the path to the folder used for this actor
+- ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively.
