@@ -48,7 +48,7 @@ To preprocess the video (face detection, segmentation, landmark detection, 3D re
 - ```<celeb_path>``` is the path to the folder used for this actor
 - ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively
 
-After successfull execution, the following structure must have been created:
+After successfull execution, the following structure will be created:
 
 ```
 <celeb_path> ----- videos -----video.mp4 (e.g. "Tarantino_t.mp4")
