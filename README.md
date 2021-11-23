@@ -30,4 +30,10 @@ conda activate NED
 2. Fill out the [form](https://docs.google.com/forms/d/e/1FAIpQLScyyNWoFvyaxxfyaPLnCIAxXgdxLEMwR9Sayjh3JpWseuYlOA/viewform) to get access to the [FSGAN](https://github.com/YuvalNirkin/fsgan)'s pretrained models. Then download 'lfw_figaro_unet_256_2_0_segmentation_v1.pth' (from the "v1" folder) and place it under "./preprocessing/segmentation".
 
 ## Create video structure
-To train or test the method on a specific subject, first create a "celeb" folder and place the video(s) of this subject into a "videos" subfolder. The training videos for the 6 actors used in our experiments can be downloaded from [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing), while the test videos for the same actors are available [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing).
+To train or test the method on a specific subject, first create a folder for this subject and place the video(s) of this subject into a **"videos"** subfolder. The training videos for the 6 Youtube actors used in our experiments can be downloaded from [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing), while the test videos for the same actors are available [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing).
+
+For example, for testing the method on Tarantino's footage, a structure similar to the following must be created:
+```
+Tarantino ----- videos ----- Tarantino_t.mp4
+```
+
