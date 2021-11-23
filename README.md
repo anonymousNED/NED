@@ -30,14 +30,14 @@ conda activate NED
 2. Fill out the [form](https://docs.google.com/forms/d/e/1FAIpQLScyyNWoFvyaxxfyaPLnCIAxXgdxLEMwR9Sayjh3JpWseuYlOA/viewform) to get access to the [FSGAN](https://github.com/YuvalNirkin/fsgan)'s pretrained models. Then download 'lfw_figaro_unet_256_2_0_segmentation_v1.pth' (from the "v1" folder) and place it under "./preprocessing/segmentation".
 
 ## Video preprocessing
-To train or test the method on a specific subject, first create a folder for this subject and place the video(s) of this subject into a **"videos"** subfolder. The training videos for the 6 Youtube actors used in our experiments can be downloaded from [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing), while the test videos for the same actors are available [here](https://drive.google.com/drive/folders/17zE9sSMP2Bxv_tHq5WoheQUvH0t5FX7i?usp=sharing).
+To train or test the method on a specific subject, first create a folder for this subject and place the video(s) of this subject into a **"videos"** subfolder. The training videos for the 6 Youtube actors used in our experiments can be downloaded from [here](https://drive.google.com/drive/folders/1sH3r0XIwLrLYSCpxu6zqqtE2v7MAXHVa?usp=sharing), while the test videos for the same actors are available [here](https://drive.google.com/drive/folders/1OyMePR3jitM4qYArmJ04xTPtraGHMU_T?usp=sharing).
 
 For example, for testing the method on Tarantino's clip, a structure similar to the following must be created:
 ```
 Tarantino ----- videos ----- Tarantino_t.mp4
 ```
 Under the above structure, there are 3 options for the video(s) placed in the "videos" subfolder:
-1. Use this footage to train a neural face renderer on the actor.
+1. Use this footage to train a neural face renderer on the actor (e.g. use the training video one of our 6 Youtube actors, or a footage of similar duration for a new identity).
 2. Use it as test footage for this actor and apply our method for manipulating his/her emotion.
 3. Use it only as reference clip for transferring the expressive style of the actor to another subject.
 
@@ -46,7 +46,7 @@ To preprocess the video (face detection, segmentation, landmark detection, 3D re
 ./preprocess.sh <celeb_path> <mode>
 ```
 - ```<celeb_path>``` is the path to the folder used for this actor
-- ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively.
+- ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively
 
 After successfull execution, the following structure must have been created:
 
@@ -84,4 +84,24 @@ After successfull execution, the following structure must have been created:
                    --- shapes_aligned (same as above, but aligned)
 ```
 ## Manipulate the emotion on a test video
-Download our pretrained manipulator from [here](https://drive.google.com/drive/folders/1ghqkO2y-rmH8kmCUJ3jrkTf2tLgQgvd8?usp=sharing). 
+Download our pretrained manipulator from [here](https://drive.google.com/drive/folders/1fLAsB2msBcLnRJWlixXt-hJ8FeX3Az6T?usp=sharing) and unzip the checkpoint.
+
+Then, assuming that preprocessing (in **test** mode) has been performed for a given video (see above), we can manipulate the expressions of the celebrity in this video by one of the following 2 ways:
+
+### Label-driven manipulation
+Select one of the 7 basic emotions (happy, angry, surprised, neutral, fear, sad, disgusted) and run :
+```bash
+python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_checkpoints --trg_emotions <emotions> --exp_name <exp_name>
+```
+- ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino")
+- ```<emotions>``` is one or more of the 7 emotions. If one emotion is given, e.g. ```--trg_emotions happy```, all the video will be converted to happy, whereas for 2 or more emotions, such as ```--trg_emotions happy angry``` the first half of the video will be happy, the second half angry and so on.
+- ```<exp_name>``` is the name of the sub-folder that will be created under the <celeb_path> for storing the results.
+
+### Reference-driven manipulation
+In this case the reference video should first be preprocessed (see above) in **reference** mode. Then run:
+```bash
+python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_checkpoints --ref_dirs <ref_dirs> --exp_name <exp_name>
+```
+- ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino")
+- ```<ref_dirs>``` is one or more of the reference videos. In particular, the path to the "DECA" sublfolder has to be given. As with labels, more than one paths can be given, in which case the video will be transformed sequentially according to those reference styles.
+- ```<exp_name>``` is the name of the sub-folder that will be created under the <celeb_path> for storing the results.
