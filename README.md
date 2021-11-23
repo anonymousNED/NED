@@ -94,7 +94,7 @@ Download our pretrained manipulator from [here](https://drive.google.com/drive/f
 
 Also, download and preprocess the test video for one of our target Youtube actors (or use a new actor, requires training a new neural face renderer).
 
-For our Youtube actors, we provide pretrained renderer's [here](https://drive.google.com/drive/folders/1vBVeiBvVP_fZ5jPSv7yd7OsdiI22Mwnd?usp=sharing). Download the .zip file for the desired actor and unzip it.
+For our Youtube actors, we provide pretrained renderer models [here](https://drive.google.com/drive/folders/1vBVeiBvVP_fZ5jPSv7yd7OsdiI22Mwnd?usp=sharing). Download the .zip file for the desired actor and unzip it.
 
 Then, assuming that preprocessing (in **test** mode) has been performed for the selected test video (see above), we can manipulate the expressions of the celebrity in this video by one of the following 2 ways:
 
