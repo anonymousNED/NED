@@ -47,3 +47,5 @@ To preprocess the video (face detection, segmentation, landmark detection, 3D re
 ```
 - ```<celeb_path>``` is the path to the folder used for this actor
 - ```<mode>``` is one of ```{train, test, reference}``` for each of the above cases respectively.
+
+## Manipulate the emotion on a test video
