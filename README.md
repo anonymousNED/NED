@@ -37,8 +37,8 @@ For example, for testing the method on Tarantino's clip, a structure similar to 
 Tarantino ----- videos ----- Tarantino_t.mp4
 ```
 Under the above structure, there are 3 options for the video(s) placed in the "videos" subfolder:
-1. Use this footage to train a neural face renderer on the actor (e.g. use the training video one of our 6 Youtube actors, or a footage of similar duration for a new identity).
-2. Use it as test footage for this actor and apply our method for manipulating his/her emotion.
+1. Use it as test footage for this actor and apply our method for manipulating his/her emotion.
+2. Use this footage to train a neural face renderer on the actor (e.g. use the training video one of our 6 Youtube actors, or a footage of similar duration for a new identity).
 3. Use it only as reference clip for transferring the expressive style of the actor to another subject.
 
 To preprocess the video (face detection, segmentation, landmark detection, 3D reconstruction, alignment) run:
@@ -83,7 +83,7 @@ After successfull execution, the following structure will be created:
                    |
                    --- shapes_aligned (same as above, but aligned)
 ```
-## Manipulate the emotion on a test video
+## 1.Manipulate the emotion on a test video
 Download our pretrained manipulator from [here](https://drive.google.com/drive/folders/1fLAsB2msBcLnRJWlixXt-hJ8FeX3Az6T?usp=sharing) and unzip the checkpoint.
 
 Also, download and preprocess the test video for one of our target Youtube actors (or use a new actor, requires training a new neural face renderer).
