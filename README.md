@@ -113,7 +113,7 @@ In this case, the reference video should first be preprocessed (see above) in **
 python manipulator/test.py --celeb <celeb_path> --checkpoints_dir ./manipulator_checkpoints --ref_dirs <ref_dirs> --exp_name <exp_name>
 ```
 - ```<celeb_path>``` is the path to the folder used for this actor's test footage (e.g. "./Tarantino").
-- ```<ref_dirs>``` is one or more of the reference videos. In particular, the path to the "DECA" sublfolder has to be given. As with labels, more than one paths can be given, in which case the video will be transformed sequentially according to those reference styles.
+- ```<ref_dirs>``` is one or more reference videos. In particular, the path to the "DECA" sublfolder has to be given. As with labels, more than one paths can be given, in which case the video will be transformed sequentially according to those reference styles.
 - ```<exp_name>``` is the name of the sub-folder that will be created under the <celeb_path> for storing the results.
 
 
