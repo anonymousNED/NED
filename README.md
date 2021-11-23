@@ -20,3 +20,5 @@ Create a conda environment, using the provided ```environment.yml``` file.
 ```bash
 conda env create -f environment.yml
 ```
+
+Follow the instructions in [DECA](https://github.com/YadiraF/DECA) (under the *Prepare data* section) to acquire the 3 files ('generic_model.pkl', 'deca_model.tar', 'FLAME_albedo_from_BFM.npz') and place them under "./DECA/data".
