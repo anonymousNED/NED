@@ -90,7 +90,7 @@ After successfull execution, the following structure will be created:
                    --- shapes_aligned (same as above, but aligned)
 ```
 ## 1.Manipulate the emotion on a test video
-Download our pretrained manipulator from [here](https://drive.google.com/drive/folders/1fLAsB2msBcLnRJWlixXt-hJ8FeX3Az6T?usp=sharing) and unzip the checkpoint.
+Download our pretrained manipulator from [here](https://drive.google.com/drive/folders/1fLAsB2msBcLnRJWlixXt-hJ8FeX3Az6T?usp=sharing) and unzip the checkpoint. We currently provide only the test scripts for the manipulator, since training would require acquiring the large-size files of the 3D-reconstructed MEAD and Aff-wild2 databases.
 
 Also, download and preprocess the test video for one of our target Youtube actors (or use a new actor, requires training a new neural face renderer).
 
