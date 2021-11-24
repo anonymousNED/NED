@@ -145,7 +145,7 @@ python renderer/train.py --celeb <celeb_path> --checkpoints_dir <checkpoints_dir
 ```
 - ```<celeb_path>``` is the path to the train folder used for the new actor.
 - ```<checkpoints_dir>``` is the new path where the checkpoints will be saved.
-- ```<load_pretrain>``` is the path with checkpoints of the pretrained meta-renderer (e.g. "./checkpoints_meta-renderer")
+- ```<load_pretrain>``` is the path with the checkpoints of the pretrained meta-renderer (e.g. "./checkpoints_meta-renderer")
 
 ## 3.Preprocess a reference video
 If you want to use a reference clip (e.g. from a movie) of another actor to transfer his/her speaking style to your test actor, simply preprocess the reference actor's clip as described above (mode=*reference*) and follow the instructions **Reference-driven manipulation**.
