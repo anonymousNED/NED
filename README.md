@@ -141,7 +141,7 @@ Download our pretrained meta-renderer ("checkpoints_meta-renderer.zip") from the
 
 Assuming that the training video of the new actor has been preprocessed (in **train** mode) as described above, you can then finetune our meta-renderer on this actor by running:
 ```bash
-python renderer/train.py --celeb <celeb_path> --checkpoints_dir <checkpoints_dir> --load_pretrain <pretrain_checkpoints>
+python renderer/train.py --celeb <celeb_path> --checkpoints_dir <checkpoints_dir> --load_pretrain <pretrain_checkpoints> --which_epoch 15
 ```
 - ```<celeb_path>``` is the path to the train folder used for the new actor.
 - ```<checkpoints_dir>``` is the new path where the checkpoints will be saved.
