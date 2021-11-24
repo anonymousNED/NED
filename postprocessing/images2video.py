@@ -8,9 +8,9 @@ from moviepy.editor import *
 def main():
     # Argument Parser
     parser = argparse.ArgumentParser()
-    parser.add_argument('--imgs_path', type=str, nargs='+', default='/Data/fpar/head2head/datasets/PacinoAngry/dataset/test/images/',
+    parser.add_argument('--imgs_path', type=str, nargs='+', default='.',
                         help="path to saved images")
-    parser.add_argument('--out_path', type=str, default='/gpu-data/fpar/video.mp4',
+    parser.add_argument('--out_path', type=str, default='.',
                         help="path to save video")
     parser.add_argument('--fps', type=float, default=30,
                         help=".")
