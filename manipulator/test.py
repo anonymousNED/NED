@@ -88,7 +88,7 @@ if __name__ == '__main__':
 
     ### initialize dataset
     assert (opt.ref_dirs is None) != (opt.trg_emotions is None), 'Specify exactly one test mode'
-    loader_src = get_test_loader(os.path.join(opt.celeb, opt.extra, 'DECA'), opt)
+    loader_src = get_test_loader(os.path.join(opt.celeb, 'DECA'), opt)
     loaders_ref = [get_test_loader(dir, opt) for dir in opt.ref_dirs] if opt.ref_dirs is not None else None
 
     ### initialize models
