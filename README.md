@@ -59,33 +59,33 @@ After successfull execution, the following structure will be created:
 ```
 <celeb_path> ----- videos -----video.mp4 (e.g. "Tarantino_t.mp4")
                    |        |
-                   |        ---video.txt (e.g. "Tarantino_t.txt", stores the per-frame bounding boxes, created only if mode=**test**)
+                   |        ---video.txt (e.g. "Tarantino_t.txt", stores the per-frame bounding boxes, created only if mode=test)
                    |
                    --- images (cropped and resized images)
                    |
-                   --- full_frames (original frames of the video, created only if mode=**test** or mode=*reference*)
+                   --- full_frames (original frames of the video, created only if mode=test or mode=reference)
                    |
-                   --- eye_landmarks (created only if mode=**train** or mode=*test*)
+                   --- eye_landmarks (created only if mode=train or mode=test)
                    |
                    --- eye_landmarks_aligned (same as above, but aligned)
                    |
-                   --- align_transforms (similarity transformation matrices, created only if mode=**train** or mode=*test*)
+                   --- align_transforms (similarity transformation matrices, created only if mode=train or mode=test)
                    |
-                   --- faces (segmented images of the face, created only if mode=**train** or mode=*test*)
+                   --- faces (segmented images of the face, created only if mode=train or mode=test)
                    |
                    --- faces_aligned (same as above, but aligned)
                    |
-                   --- masks (binary face masks, created only if mode=**train** or mode=*test*)
+                   --- masks (binary face masks, created only if mode=train or mode=test)
                    |
                    --- masks_aligned (same as above, but aligned)
                    |
                    --- DECA (3D face model parameters)
                    |
-                   --- nmfcs (NMFC images, created only if mode=**train** or mode=*test*)
+                   --- nmfcs (NMFC images, created only if mode=train or mode=test)
                    |
                    --- nmfcs_aligned (same as above, but aligned)
                    |
-                   --- shapes (detailed shape images, created only if mode=**train** or mode=*test*)
+                   --- shapes (detailed shape images, created only if mode=train or mode=test)
                    |
                    --- shapes_aligned (same as above, but aligned)
 ```
@@ -96,7 +96,7 @@ Also, download and preprocess the test video for one of our target Youtube actor
 
 For our Youtube actors, we provide pretrained renderer models [here](https://drive.google.com/drive/folders/1vBVeiBvVP_fZ5jPSv7yd7OsdiI22Mwnd?usp=sharing). Download the .zip file for the desired actor and unzip it.
 
-Then, assuming that preprocessing (in **test** mode) has been performed for the selected test video (see above), we can manipulate the expressions of the celebrity in this video by one of the following 2 ways:
+Then, assuming that preprocessing (in **test** mode) has been performed for the selected test video (see above), you can manipulate the expressions of the celebrity in this video by one of the following 2 ways:
 
 ##### 1.Label-driven manipulation
 Select one of the 7 basic emotions (happy, angry, surprised, neutral, fear, sad, disgusted) and run :
